@@ -3,7 +3,7 @@ import { IFlatCard } from "@/interfaces/IFlatCard";
 
 const FlatCard = ({ data }: { data: IFlatCard }) => {
   return (
-    <View style={{ flex: 1, flexDirection: "column", borderWidth: 1 }}>
+    <View style={{ flexDirection: "column", borderWidth: 1 }}>
       <Text>Id:{data.property_id}</Text>
       <Text>Adres: {data.address}</Text>
       <Text>Właściciel:{data.owner_id}</Text>
