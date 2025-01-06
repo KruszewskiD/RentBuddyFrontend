@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 
-const Invoices = () => {
+const InvoicesScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Ekran Faktur</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Invoices;
+export default InvoicesScreen;

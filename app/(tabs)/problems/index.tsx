@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet, Button } from "react-native";
 
-const Problems = () => {
+const ProblemsScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Ekran Problemów</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Problems;
+export default ProblemsScreen;

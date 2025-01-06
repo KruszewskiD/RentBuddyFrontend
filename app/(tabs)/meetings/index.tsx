@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 
-const Meetings = () => {
+const MeetingsScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Ekran Spotkań</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Meetings;
+export default MeetingsScreen;
