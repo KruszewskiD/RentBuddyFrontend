@@ -7,9 +7,12 @@ type TLabelInput = {
 
 const LabelInput = ({ label, onChangeText }: TLabelInput) => {
   return (
-    <View style={{ borderWidth: 1, flexDirection: "row", gap: 5 }}>
+    <View style={{ flexDirection: "column", gap: 5 }}>
       <Text style={{ fontWeight: "bold" }}>{label}</Text>
-      <TextInput style={{ flex: 1 }} onChangeText={onChangeText}></TextInput>
+      <TextInput
+        style={{ borderWidth: 1, paddingVertical: 10, paddingHorizontal: 5 }}
+        onChangeText={onChangeText}
+      ></TextInput>
     </View>
   );
 };

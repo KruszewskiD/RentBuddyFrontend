@@ -12,7 +12,7 @@ const InvoicesScreen = () => {
         keyExtractor={(flat) => flat.property_id.toString()}
         renderItem={({ item }) => {
           return (
-            <Link href={`/${item.invoice_id}`} asChild>
+            <Link href={`/invoices/${item.invoice_id}`} asChild>
               <Pressable>
                 <InvoiceCard invoiceData={item} />
               </Pressable>

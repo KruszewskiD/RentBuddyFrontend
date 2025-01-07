@@ -12,7 +12,10 @@ const CreateInvoiceScreen = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <View style={{ flex: 1, padding: 10 }}>
-        <SimpleText>Wybierz mieszkanie:</SimpleText>
+        <LabelInput label="Nazwa faktury:" />
+        <SimpleText style={{ fontWeight: "bold" }}>
+          Wybierz mieszkanie:
+        </SimpleText>
         <Dropdown
           options={["1", "2", "3"]} // Przekazanie opcji
           value={selectedOption} // Aktualnie wybrana opcja

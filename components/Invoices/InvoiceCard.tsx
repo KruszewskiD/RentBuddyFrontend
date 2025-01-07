@@ -6,7 +6,7 @@ const InvoiceCard = ({ invoiceData }: { invoiceData: TInvoice }) => {
   return (
     <View
       style={[
-        { flexDirection: "column", borderWidth: 1, flex: 1 },
+        { flexDirection: "column", borderWidth: 1 },
         { backgroundColor: invoiceData.status == "paid" ? "green" : "red" },
       ]}
     >

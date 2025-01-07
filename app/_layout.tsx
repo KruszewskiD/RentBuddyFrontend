@@ -4,7 +4,14 @@ const Layout = () => {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="[id]" options={{ headerBackTitle: "Mieszkania" }} />
+      <Stack.Screen
+        name="flats/[id]"
+        options={{ headerBackTitle: "Mieszkania" }}
+      />
+      <Stack.Screen
+        name="invoices/[id]"
+        options={{ headerBackTitle: "Faktury" }}
+      />
       <Stack.Screen
         name="create-flat"
         options={{ headerBackTitle: "Mieszkania", title: "Dodaj Mieszkanie" }}

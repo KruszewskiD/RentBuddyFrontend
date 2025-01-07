@@ -19,7 +19,7 @@ const FlatsScreen = () => {
         renderItem={({ item }) => {
           return (
             // <Link href={`/(tabs)/flats/${item.property_id}`} asChild>
-            <Link href={`/${item.property_id}`} asChild>
+            <Link href={`/flats/${item.property_id}`} asChild>
               <Pressable>
                 <FlatCard data={item} />
               </Pressable>

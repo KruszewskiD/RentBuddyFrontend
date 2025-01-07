@@ -1,5 +1,4 @@
 import FlatCard from "@/components/Flats/FlatCard";
-import { IFlatCard } from "@/interfaces/IFlatCard";
 import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { properties } from "@/constants/dummy_data/properites";
 import { useEffect } from "react";
