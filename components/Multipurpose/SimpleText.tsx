@@ -4,7 +4,7 @@ const SimpleText = ({
   children,
   style,
 }: {
-  children: string;
+  children: string | number | string[] | null;
   style?: StyleProp<TextStyle>;
 }) => {
   return <Text style={style}>{children}</Text>;

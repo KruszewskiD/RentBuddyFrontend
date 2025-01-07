@@ -9,6 +9,10 @@ const Layout = () => {
         name="create-flat"
         options={{ headerBackTitle: "Mieszkania", title: "Dodaj Mieszkanie" }}
       />
+      <Stack.Screen
+        name="create-invoice"
+        options={{ headerBackTitle: "Faktury", title: "Dodaj Fakturę" }}
+      />
     </Stack>
   );
 };

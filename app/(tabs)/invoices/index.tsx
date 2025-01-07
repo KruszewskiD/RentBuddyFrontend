@@ -1,9 +1,27 @@
-import { Text, View, StyleSheet } from "react-native";
-
+import { Text, View, StyleSheet, FlatList, Pressable } from "react-native";
+import { invoices } from "../../../constants/dummy_data/invoices";
+import { Link } from "expo-router";
+import FlatCard from "@/components/Flats/FlatCard";
+import InvoiceCard from "@/components/Invoices/InvoiceCard";
+import AddButton from "@/components/Multipurpose/AddButton";
 const InvoicesScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Ekran Faktur</Text>
+      <FlatList
+        data={invoices}
+        keyExtractor={(flat) => flat.property_id.toString()}
+        renderItem={({ item }) => {
+          return (
+            <Link href={`/${item.invoice_id}`} asChild>
+              <Pressable>
+                <InvoiceCard invoiceData={item} />
+              </Pressable>
+            </Link>
+          );
+        }}
+        contentContainerStyle={{ gap: 10 }}
+      ></FlatList>
+      <AddButton href="/create-invoice" />
     </View>
   );
 };
@@ -11,8 +29,6 @@ const InvoicesScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
   },
   text: {
     fontSize: 18,
