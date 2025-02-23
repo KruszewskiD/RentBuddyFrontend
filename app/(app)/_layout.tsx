@@ -20,7 +20,18 @@ const Layout = () => {
         name="create-invoice"
         options={{ headerBackTitle: "Faktury", title: "Dodaj Fakturę" }}
       />
+      <Stack.Screen
+          name="create-issue"
+          options={{ title: "Zgłoś problem" }}
+        />
+
+      <Stack.Screen
+          name="create-meeting"
+          options={{ title: "Zaplanuj wizytę" }}
+        />
     </Stack>
+
+      
   );
 };
 

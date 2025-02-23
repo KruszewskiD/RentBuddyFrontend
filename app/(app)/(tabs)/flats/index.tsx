@@ -10,6 +10,7 @@ import {
 import { properties } from "../../../../constants/dummy_data/properites";
 import FlatCard from "@/components/Flats/FlatCard";
 import { Link } from "expo-router";
+import AddButton from "@/components/Multipurpose/AddButton";
 const FlatsScreen = () => {
   const userId = 2
   const rented = {title:"Wynajęte", data:properties.filter((property)=>{return property.tenant_id===userId})}
@@ -46,7 +47,7 @@ const FlatsScreen = () => {
       />
 
 
-
+        <AddButton href={"/(app)/create-flat"}/>
 
 
     </View>

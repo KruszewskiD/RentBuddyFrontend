@@ -1,5 +1,5 @@
 import FlatCard from "@/components/Flats/FlatCard";
-import { useLocalSearchParams, useNavigation, useRouter } from "expo-router";
+import { router, useLocalSearchParams, useNavigation, useRouter } from "expo-router";
 import { properties } from "@/constants/dummy_data/properites";
 import { useEffect } from "react";
 import { View } from "react-native";
@@ -21,8 +21,10 @@ const FlatScreen = () => {
     <View style={{flex:1}}>
       <FlatCard data={data[0]} length={0} index={1}/>
       <SimpleText>{data[0].description}</SimpleText>
-      <View style={{ gap: 20, marginVertical: 20, flex:1, backgroundColor:"red"}}>
-        <SimpleButton title="Wystaw fakturę" onPress={() => {}} />
+      <View style={{ gap: 20, marginVertical: 20, flex:1}}>
+        <SimpleButton title="Wystaw fakturę" onPress={() => {
+          router.push("/create-invoice")
+        }} />
 
         {data[0].tenant_id ? (
           <SimpleButton title="Usuń najemcę" onPress={() => {}} />
@@ -30,9 +32,13 @@ const FlatScreen = () => {
           <SimpleButton title="Dodaj najemcę" onPress={() => {}} />
         )}
 
-        <SimpleButton title="Umów wizytę" onPress={() => {}} />
+        <SimpleButton title="Umów wizytę" onPress={() => {
+          router.push("/(app)/create-meeting")
+        }} />
 
-        <SimpleButton title="Zgłoś problem" onPress={() => {}} />
+        <SimpleButton title="Zgłoś problem" onPress={() => {
+          router.push("/(app)/create-issue")
+        }} />
       </View>
     </View>
   );

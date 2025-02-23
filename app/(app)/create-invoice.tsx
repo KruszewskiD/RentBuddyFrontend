@@ -1,4 +1,5 @@
 import Dropdown from "@/components/Multipurpose/DropdownWithModal";
+import InputWithIcon from "@/components/Multipurpose/InputWithIcon";
 import LabelInput from "@/components/Multipurpose/LabelInput";
 import SimpleButton from "@/components/Multipurpose/SimpleButton";
 import SimpleText from "@/components/Multipurpose/SimpleText";
@@ -11,17 +12,10 @@ const CreateInvoiceScreen = () => {
   const [selectedOption, setSelectedOption] = useState("");
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <View style={{ flex: 1, padding: 10 }}>
-        <LabelInput label="Nazwa faktury:" />
-        <SimpleText style={{ fontWeight: "bold" }}>
-          Wybierz mieszkanie:
-        </SimpleText>
-        <Dropdown
-          options={["1", "2", "3"]} // Przekazanie opcji
-          value={selectedOption} // Aktualnie wybrana opcja
-          setValue={setSelectedOption} // Funkcja aktualizująca wybraną opcję
-        />
-        <LabelInput label="Kwota:" />
+      <View style={{ flex: 1, padding: 10, gap:10 }}>
+        <InputWithIcon placeholder="Tytuł faktury" icon="🧾" onChangeText={()=>{}}/>
+        <InputWithIcon placeholder="Wartość faktury" icon="💵" onChangeText={()=>{}}/>
+        <InputWithIcon placeholder="Data płatności" icon="📅" onChangeText={()=>{}}/>
         <SimpleButton title="Stwórz fakturę" onPress={() => {}} />
       </View>
     </GestureHandlerRootView>

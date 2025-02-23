@@ -16,10 +16,10 @@ const AddButton = ({ href }: { href: Href }) => {
             right: 10,
             width: 50,
             height: 50,
-            backgroundColor: "red",
+            backgroundColor: "#888",
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: 50,
+            borderRadius: 10,
           },
         ]}
       >
