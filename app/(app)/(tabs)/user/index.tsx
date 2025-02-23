@@ -1,9 +1,9 @@
-import { Text, View, StyleSheet, Button } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 
-const ProblemsScreen = () => {
+const UserScreen = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Ekran Problemów</Text>
+      <Text style={styles.text}>Ekran Usera</Text>
     </View>
   );
 };
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProblemsScreen;
+export default UserScreen;

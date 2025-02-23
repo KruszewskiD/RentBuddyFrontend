@@ -8,19 +8,10 @@ type TSimpleButton = {
 const SimpleButton = ({ title, onPress }: TSimpleButton) => {
   return (
     <Pressable onPress={onPress}>
-      <View
-        style={{
-          backgroundColor: "green",
-          width: 150,
-          height: 50,
-          justifyContent: "center",
-          alignItems: "center",
-          borderWidth: 3,
-        }}
-      >
-        <Text style={{ color: "white", fontWeight: "bold" }}>{title}</Text>
-      </View>
-    </Pressable>
+    <View style={{ flexDirection:"row", borderRadius:10, backgroundColor:"#ddd",padding:10, justifyContent:"center", alignItems:"center", borderWidth:1}}>
+        <Text style={{fontSize:20, letterSpacing:1}}>{title}</Text>
+    </View>
+  </Pressable>
   );
 };
 

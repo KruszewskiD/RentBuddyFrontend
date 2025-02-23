@@ -1,27 +1,28 @@
-import { Stack } from "expo-router";
+import { Stack, useRouter, useSegments } from 'expo-router';
+import { useState, useEffect } from 'react';
 
-const Layout = () => {
+export default function RootLayout() {
+  // const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const router = useRouter();
+  // const segments = useSegments();
+
+  // useEffect(() => {
+  //   const inAuthGroup = segments[0] === 'login' || segments[0] === 'sign_up';
+
+  //   if (!isLoggedIn && !inAuthGroup) {
+  //     router.replace('/login'); // Przekierowanie do login jeśli niezalogowany
+  //   }
+
+  //   if (isLoggedIn && inAuthGroup) {
+  //     router.replace('/(app)'); // Po zalogowaniu → (app)/home
+  //   }
+  // }, [isLoggedIn, segments]);
+
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="flats/[id]"
-        options={{ headerBackTitle: "Mieszkania" }}
-      />
-      <Stack.Screen
-        name="invoices/[id]"
-        options={{ headerBackTitle: "Faktury" }}
-      />
-      <Stack.Screen
-        name="create-flat"
-        options={{ headerBackTitle: "Mieszkania", title: "Dodaj Mieszkanie" }}
-      />
-      <Stack.Screen
-        name="create-invoice"
-        options={{ headerBackTitle: "Faktury", title: "Dodaj Fakturę" }}
-      />
+    <Stack screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="login"  />
+      <Stack.Screen name="sign_up"  />
+      <Stack.Screen name="(app)"  />
     </Stack>
   );
-};
-
-export default Layout;
+}

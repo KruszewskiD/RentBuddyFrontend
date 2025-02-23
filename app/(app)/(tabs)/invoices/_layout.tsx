@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
 
-const InvoicesLayout = () => {
+const LoginLayout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -8,4 +8,4 @@ const InvoicesLayout = () => {
   );
 };
 
-export default InvoicesLayout;
+export default LoginLayout;

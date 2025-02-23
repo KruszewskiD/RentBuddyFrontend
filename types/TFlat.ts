@@ -1,6 +1,10 @@
 export type TFlat = {
   property_id: number;
-  address: string;
-  owner_id: string | number;
-  tenant_id?: string | number | null;
+  title: string;
+  description: string;
+  city: string;
+  street: string;
+  street_number: string;
+  owner_id: number | string;
+  tenant_id?: number | string | null;
 };

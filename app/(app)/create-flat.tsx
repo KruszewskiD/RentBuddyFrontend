@@ -8,12 +8,11 @@ const CreatFlatScreen = () => {
     <View style={{ gap: 10 }}>
       <SimpleText>Stwórz mieszkanie:</SimpleText>
       <View style={{ gap: 5 }}>
+        <LabelInput label="Tytuł:" />
         <LabelInput label="Miasto:" />
-        <LabelInput label="Kod pocztowy:" />
-        <LabelInput label="Osiedle:" />
         <LabelInput label="Ulica:" />
-        <LabelInput label="Numer domu:" />
-        <LabelInput label="Numer mieszkania:" />
+        <LabelInput label="Numer domu/mieszkania:" />
+        <LabelInput label="Opis:" />
       </View>
       <View style={{ alignItems: "center" }}>
         <SimpleButton title="Przycisk" onPress={() => {}} />

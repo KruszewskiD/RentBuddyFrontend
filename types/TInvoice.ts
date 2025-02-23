@@ -7,4 +7,6 @@ export type TInvoice = {
   property_id: number;
   created_at: string; // lub użyć Date, jeśli preferujesz obiekt daty
   updated_at: string; // lub użyć Date
+  invoice_title:string;
+  payment_deadline:string;
 };
