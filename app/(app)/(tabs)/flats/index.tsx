@@ -7,18 +7,48 @@ import {
   Pressable,
   SectionList,
 } from "react-native";
-import { properties } from "../../../../constants/dummy_data/properites";
 import FlatCard from "@/components/Flats/FlatCard";
 import { Link } from "expo-router";
 import AddButton from "@/components/Multipurpose/AddButton";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { TFlat } from "@/types/TFlat";
 const FlatsScreen = () => {
-  const userId = 2
-  const rented = {title:"Wynajęte", data:properties.filter((property)=>{return property.tenant_id===userId})}
-  const owned = {title:"Moje Mieszkania", data:properties.filter((property)=>{return property.owner_id===userId})}
+  const userId = 10
+  const [properties, setProperites] = useState<TFlat[]|[]>()
+
+  // ZAPYTANIE DO BACKENDU
+  useEffect(()=>{
+    axios({
+      method: 'get',
+      url: `http://localhost:3000/user-properties/${userId}`,
+    })
+      .then(function (response) {
+        if(response.data) {
+          console.log(response.data)
+          setProperites(response.data)
+        }else{
+          setProperites([])
+        }
+      });
+  }, [])
+
+
+  const rented = {
+    title: "Wynajęte",
+    data: properties?.filter((property) => property.tenant_id === userId) || []
+  };
+  const owned = {
+    title: "Moje Mieszkania",
+    data: properties?.filter((property) => property.owner_id === userId) || []
+  };
+  
   const sectionListData = []
   sectionListData.push(rented)
   sectionListData.push(owned)
   console.log(sectionListData)
+
+
   return (
     <View style={styles.container}>
       <SectionList
@@ -45,11 +75,7 @@ const FlatsScreen = () => {
         )}
         
       />
-
-
         <AddButton href={"/(app)/create-flat"}/>
-
-
     </View>
   );
 };

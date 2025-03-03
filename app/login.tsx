@@ -4,15 +4,34 @@ import SimpleButton from "@/components/Multipurpose/SimpleButton";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, router } from "expo-router";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
 const LoginScreen = () => {
   const rentAsArray = "rent".split("")
   const buddyAsArray = "buddy".split("")
   type ILoginData = {
-    email?:string,
-    password?:string
+    username:string,
+    password:string
   }
 
-  const [loginData, setLoginData] = useState<ILoginData>({})
+  const [loginData, setLoginData] = useState<ILoginData>({
+    username:"",
+    password:""
+  })
+  const {onLogin} = useAuth()
+
+  const loginHandler = async ()=>{
+    const hasNull = Object.values(loginData).some(value => value === "")
+    if(hasNull){
+      alert("Uzupełnij wszystkie wymagane pola!")
+    }else{
+        const result = await onLogin!(loginData.username, loginData.password);
+        if(result && result.error){
+          alert(result.msg)
+        }
+      }
+    }
+
+
   console.log(loginData)
   return(
     <SafeAreaView style={{flex:1}}>
@@ -32,22 +51,15 @@ const LoginScreen = () => {
       <View style={{flex:4, gap:20, marginTop:30}}>
         {/* INPUTY */}
           <View style={{gap:10}}>
-              <InputWithIcon placeholder="email" icon="👤" onChangeText={(email)=>{
-                setLoginData((loginData)=>{ return {...loginData, email}})
+              <InputWithIcon placeholder="nazwa uzytkownika" icon="👨‍💻" onChangeText={(username)=>{
+                setLoginData((loginData)=>{ return {...loginData, username}})
               }} />
               <InputWithIcon placeholder="hasło" icon="🫥" secureTextEntry onChangeText={(password)=>{
                 setLoginData((loginData)=>{ return {...loginData, password}})
               }}  />
           </View>
           <View style={{gap:10, flex:1}}>
-              <SimpleButton title="Zaloguj się!" onPress={()=>{
-                if(loginData.email==="daniel@data.rocks"&&loginData.password==="Gortn1500*"){
-                  router.replace("/(app)/(tabs)/flats/")
-                }else{
-                  router.replace("/(app)/(tabs)/flats/")
-
-                }
-              }}/>
+              <SimpleButton title="Zaloguj się!" onPress={loginHandler}/>
               <SimpleButton title="Zarejestruj się!" onPress={()=>{router.push("/sign_up")}}/>
           </View>
       </View>

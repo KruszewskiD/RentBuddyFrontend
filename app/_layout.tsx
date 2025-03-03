@@ -1,28 +1,54 @@
-import { Stack, useRouter, useSegments } from 'expo-router';
-import { useState, useEffect } from 'react';
+import { Stack, useRouter } from "expo-router";
+import { useEffect } from "react";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
+import { View, ActivityIndicator } from "react-native";
 
 export default function RootLayout() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const router = useRouter();
-  // const segments = useSegments();
+  return (
+    <AuthProvider>
+      <AuthLayout />
+    </AuthProvider>
+  );
+}
 
-  // useEffect(() => {
-  //   const inAuthGroup = segments[0] === 'login' || segments[0] === 'sign_up';
+function AuthLayout() {
+  const { authState } = useAuth(); // Nasz stan autoryzacji
+  const router = useRouter();
 
-  //   if (!isLoggedIn && !inAuthGroup) {
-  //     router.replace('/login'); // Przekierowanie do login jeśli niezalogowany
-  //   }
+  // Używamy useEffect do przekierowania w zależności od stanu authState
+  useEffect(() => {
+    if (authState?.authenticated === true) {
+      // Użytkownik zalogowany, przekierowanie do głównej aplikacji
+      router.replace("/(app)"); // Upewnij się, że masz poprawny endpoint!
+    } else if (authState?.authenticated === false) {
+      // Użytkownik niezalogowany, przekierowanie do login
+      router.replace("/login");
+    }
+  }, [authState, router]);
 
-  //   if (isLoggedIn && inAuthGroup) {
-  //     router.replace('/(app)'); // Po zalogowaniu → (app)/home
-  //   }
-  // }, [isLoggedIn, segments]);
+  if (authState?.authenticated === null) {
+    // Ładowanie stanu autoryzacji, gdy jeszcze nie jest załadowany
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
 
+  // Jeśli użytkownik nie jest zalogowany
+  if (authState?.authenticated === false) {
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="login" />
+        <Stack.Screen name="sign_up" />
+      </Stack>
+    );
+  }
+
+  // Jeśli użytkownik jest zalogowany
   return (
     <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="login"  />
-      <Stack.Screen name="sign_up"  />
-      <Stack.Screen name="(app)"  />
+      <Stack.Screen name="(app)" />
     </Stack>
   );
 }

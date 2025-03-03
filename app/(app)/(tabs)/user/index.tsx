@@ -1,9 +1,14 @@
-import { Text, View, StyleSheet } from "react-native";
+import SimpleButton from "@/components/Multipurpose/SimpleButton";
+import { useAuth } from "@/context/AuthContext";
+import { Text, View, StyleSheet, Button } from "react-native";
 
 const UserScreen = () => {
+  const {authState, onLogout} = useAuth()
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Ekran Usera</Text>
+      <SimpleButton onPress={onLogout} title="Wyloguj"></SimpleButton>
     </View>
   );
 };

@@ -7,16 +7,17 @@ import {
   Pressable,
   SectionList,
 } from "react-native";
-import { properties } from "../../../../constants/dummy_data/properites";
+import { invitations } from "../../../../constants/dummy_data/invitations";
 import FlatCard from "@/components/Flats/FlatCard";
 import { Link } from "expo-router";
+import InvitationCard from "@/components/Invitations/InvitationCard";
 const InvitationsScreen = () => {
   const userId = 2
-  const rented = {title:"Wynajęte", data:properties.filter((property)=>{return property.tenant_id===userId})}
-  const owned = {title:"Moje Mieszkania", data:properties.filter((property)=>{return property.owner_id===userId})}
+  const sendedInvitations = {title:"Wysłane zaproszenia", data:invitations.filter((invitation)=>{return invitation.tenant_id===userId && invitation.status==="pending"})}
+  const recivedInvitations = {title:"Zaproszenia", data:invitations.filter((invitation)=>{return invitation.owner_id===userId && invitation.status==="pending"})}
   const sectionListData = []
-  sectionListData.push(rented)
-  sectionListData.push(owned)
+  sectionListData.push(recivedInvitations)
+  sectionListData.push(sendedInvitations)
   console.log(sectionListData)
   return (
     <View style={styles.container}>
@@ -26,9 +27,9 @@ const InvitationsScreen = () => {
         renderItem={({ item, index, section }) => {
           return (
             // <Link href={`/(tabs)/flats/${item.property_id}`} asChild>
-            <Link href={`/flats/${item.property_id}`} asChild>
+            <Link href={`/invitations/${item.property_id}`} asChild>
               <Pressable>
-                <FlatCard data={item} index={index} length={section.data.length}/>
+                <InvitationCard data={item} index={index} length={section.data.length}/>
               </Pressable>
             </Link>
           );
